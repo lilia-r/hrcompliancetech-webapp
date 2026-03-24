@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRComplianceTech – Tableau de bord</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ============================================================
+         BARRE DE NAVIGATION DU TABLEAU DE BORD
+         ============================================================ -->
+    <nav class="navbar navbar-expand-md site-navbar" aria-label="Navigation principale">
+        <div class="container-fluid px-4">
+
+            <a class="navbar-brand brand" href="../index.html" aria-label="Accueil HRComplianceTech">
+                <span class="brand-hr">HR</span><span class="brand-compliance">ComplianceTech</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu-dashboard"
+                aria-controls="menu-dashboard"
+                aria-expanded="false"
+                aria-label="Ouvrir le menu"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu-dashboard">
+                <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom active" href="../dashboards/dashboard.html" aria-current="page">
+                            Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-connexion" href="../auth/connexion.html">
+                            Déconnexion
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         CONTENU PRINCIPAL
+         ============================================================ -->
+    <main class="dashboard-main">
+        <div class="container-fluid px-4">
+
+            <!-- En-tête de la page -->
+            <header class="dashboard-entete">
+                <div>
+                    <h1 class="dashboard-titre">Tableau de bord des signalements</h1>
+                    <p class="dashboard-sous-titre">
+                        Vue d'ensemble et traitement des dossiers en cours.
+                    </p>
+                </div>
+                <p class="dashboard-compteur" id="compteur-resultats" aria-live="polite">
+                    4 dossier(s) affichés
+                </p>
+            </header>
+
+            <!-- ====================================================
+                 BARRE DE FILTRES
+                 ==================================================== -->
+            <section class="filtres-bloc" aria-label="Filtres de recherche">
+                <div class="row g-3 align-items-end">
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                        <label for="filtre-statut" class="form-label filtre-label">Statut</label>
+                        <select id="filtre-statut" class="form-select custom-input filtre-select">
+                            <option value="">Tous les statuts</option>
+                            <option value="nouveau">Nouveau</option>
+                            <option value="en-cours">En cours</option>
+                            <option value="clos">Clos</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                        <label for="filtre-priorite" class="form-label filtre-label">Priorité</label>
+                        <select id="filtre-priorite" class="form-select custom-input filtre-select">
+                            <option value="">Toutes les priorités</option>
+                            <option value="haute">Haute</option>
+                            <option value="normale">Normale</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                        <label for="filtre-categorie" class="form-label filtre-label">Catégorie</label>
+                        <select id="filtre-categorie" class="form-select custom-input filtre-select">
+                            <option value="">Toutes les catégories</option>
+                            <option value="harcelement">Harcèlement</option>
+                            <option value="discrimination">Discrimination</option>
+                            <option value="fraude">Fraude</option>
+                            <option value="ethique">Atteinte à l'éthique</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <button type="button" id="btn-reinit-filtres" class="btn-reinit">
+                            Réinitialiser les filtres
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ====================================================
+                 TABLEAU DES SIGNALEMENTS
+                 ==================================================== -->
+            <section class="tableau-bloc" aria-label="Liste des signalements">
+
+                <p id="message-vide" class="tableau-vide cache" role="status">
+                    Aucun dossier ne correspond aux critères de filtrage sélectionnés.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table-signalements" id="tableau-signalements">
+                        <thead>
+                            <tr>
+                                <th scope="col">Référence</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Priorité</th>
+                                <!--
+                                    La colonne Action est plus large car elle accueille
+                                    désormais deux boutons côte à côte.
+                                -->
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corps-tableau">
+
+                            <tr
+                                data-statut="nouveau"
+                                data-priorite="haute"
+                                data-categorie="harcelement"
+                                class="ligne-haute"
+                            >
+                                <td class="cellule-ref">HRC-1042</td>
+                                <td>14/05/2025</td>
+                                <td>Harcèlement</td>
+                                <td><span class="statut statut-nouveau">Nouveau</span></td>
+                                <td><span class="priorite priorite-haute">HAUTE</span></td>
+                                <td>
+                                    <!--
+                                        d-flex       : place les boutons sur un axe horizontal (flexbox)
+                                        gap-2        : espacement de 0.5rem entre les deux boutons
+                                        flex-wrap    : permet le retour à la ligne sur très petit écran
+                                        align-items-center : aligne verticalement les boutons sur leur centre
+                                    -->
+                                    <div class="d-flex gap-2 flex-wrap align-items-center">
+                                        <a href="/modules/dossier/dossier.html?ref=HRC-1042" class="btn-ouvrir">
+                                            Ouvrir le dossier
+                                        </a>
+                                        <a href="/modules/messagerie/messagerie-rh.html?ref=HRC-1042" class="btn-messagerie">
+                                            Messagerie
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr
+                                data-statut="en-cours"
+                                data-priorite="normale"
+                                data-categorie="fraude"
+                                class="ligne-normale"
+                            >
+                                <td class="cellule-ref">HRC-1039</td>
+                                <td>09/05/2025</td>
+                                <td>Fraude</td>
+                                <td><span class="statut statut-en-cours">En cours</span></td>
+                                <td><span class="priorite priorite-normale">Normale</span></td>
+                                <td>
+                                    <div class="d-flex gap-2 flex-wrap align-items-center">
+                                        <a href="/modules/dossier/dossier.html?ref=HRC-1039" class="btn-ouvrir">
+                                            Ouvrir le dossier
+                                        </a>
+                                        <a href="/modules/messagerie/messagerie-rh.html?ref=HRC-1039" class="btn-messagerie">
+                                            Messagerie
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr
+                                data-statut="nouveau"
+                                data-priorite="haute"
+                                data-categorie="discrimination"
+                                class="ligne-haute"
+                            >
+                                <td class="cellule-ref">HRC-1035</td>
+                                <td>02/05/2025</td>
+                                <td>Discrimination</td>
+                                <td><span class="statut statut-nouveau">Nouveau</span></td>
+                                <td><span class="priorite priorite-haute">HAUTE</span></td>
+                                <td>
+                                    <div class="d-flex gap-2 flex-wrap align-items-center">
+                                        <a href="/modules/dossier/dossier.html?ref=HRC-1035" class="btn-ouvrir">
+                                            Ouvrir le dossier
+                                        </a>
+                                        <a href="/modules/messagerie/messagerie-rh.html?ref=HRC-1035" class="btn-messagerie">
+                                            Messagerie
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr
+                                data-statut="clos"
+                                data-priorite="normale"
+                                data-categorie="ethique"
+                                class="ligne-normale"
+                            >
+                                <td class="cellule-ref">HRC-1028</td>
+                                <td>18/04/2025</td>
+                                <td>Atteinte à l'éthique</td>
+                                <td><span class="statut statut-clos">Clos</span></td>
+                                <td><span class="priorite priorite-normale">Normale</span></td>
+                                <td>
+                                    <div class="d-flex gap-2 flex-wrap align-items-center">
+                                        <a href="/modules/dossier/dossier.html?ref=HRC-1028" class="btn-ouvrir">
+                                            Ouvrir le dossier
+                                        </a>
+                                        <a href="/modules/messagerie/messagerie-rh.html?ref=HRC-1028" class="btn-messagerie">
+                                            Messagerie
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+         PIED DE PAGE
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container-fluid px-4 text-center py-3">
+            <small>
+                HRComplianceTech &copy; 2025 &mdash;
+                Solution conforme RGPD &amp; Loi Sapin 2 &mdash;
+                Données hébergées sur serveur européen
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

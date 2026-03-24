@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRComplianceTech – Plateforme de signalement sécurisé</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="landing-body">
+    <!-- ============================================================
+         BARRE DE NAVIGATION
+         ============================================================ -->
+    <nav
+      class="navbar navbar-expand-md site-navbar"
+      aria-label="Navigation principale"
+    >
+      <div class="container">
+        <!-- Logo / Marque : lien vers la page d'accueil -->
+        <a
+          class="navbar-brand brand"
+          href="index.html"
+          aria-label="Accueil HRComplianceTech"
+        >
+          <span class="brand-hr">HR</span
+          ><span class="brand-compliance">ComplianceTech</span>
+        </a>
+
+        <!-- Bouton hamburger visible uniquement sur mobile (Bootstrap) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu-principal"
+          aria-controls="menu-principal"
+          aria-expanded="false"
+          aria-label="Ouvrir le menu de navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Liens de navigation alignés à droite via ms-auto -->
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+            <li class="nav-item">
+              <a
+                class="nav-link nav-link-custom active"
+                href="index.html"
+                aria-current="page"
+                >Accueil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-connexion" href="auth/connexion.html"
+                >Connexion</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ============================================================
+             SECTION HERO (accroche principale)
+             ============================================================ -->
+      <section class="hero-section" aria-labelledby="titre-hero">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-7 col-md-9 col-12">
+              <!-- Pastille de conformité réglementaire -->
+              <span class="compliance-badge"
+                >Conforme RGPD &amp; Loi Sapin 2</span
+              >
+
+              <h1 class="hero-title" id="titre-hero">
+                Signalement interne,<br />sécurisé et confidentiel
+              </h1>
+
+              <p class="hero-subtitle">
+                HRComplianceTech met à disposition des salariés et des équipes
+                RH une plateforme numérique sécurisée pour déposer, suivre et
+                traiter les signalements internes. Anonymat garanti. Données
+                hébergées en Europe.
+              </p>
+
+              <a
+                href="auth/connexion.html"
+                class="btn-hero-primary"
+                role="button"
+              >
+                Accéder à la plateforme
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+             SECTION ARGUMENTS DE CONFIANCE
+             ============================================================ -->
+      <section class="arguments-section" aria-labelledby="titre-arguments">
+        <div class="container">
+          <h2 class="section-title text-center" id="titre-arguments">
+            Pourquoi nous faire confiance ?
+          </h2>
+
+          <div class="row g-4 mt-2 justify-content-center">
+            <!-- Argument 1 : Conformité légale -->
+            <div class="col-lg-4 col-md-6 col-12">
+              <article class="argument-card" aria-label="Conformité légale">
+                <h3 class="argument-title">Conformité légale garantie</h3>
+                <p class="argument-text">
+                  Notre solution respecte la
+                  <strong>loi Sapin 2</strong> (obligation de dispositif
+                  d'alerte interne pour les entreprises de plus de 50 salariés)
+                  et le <strong>RGPD</strong>. Votre entreprise reste en
+                  conformité sans effort supplémentaire.
+                </p>
+              </article>
+            </div>
+
+            <!-- Argument 2 : Anonymat (carte mise en avant) -->
+            <div class="col-lg-4 col-md-6 col-12">
+              <article
+                class="argument-card"
+                aria-label="Anonymat et confidentialité"
+              >
+                <h3 class="argument-title">Anonymat total possible</h3>
+                <p class="argument-text">
+                  Le salarié choisit librement de rester
+                  <strong>anonyme</strong> ou de s'identifier. Un
+                  <strong>code de suivi unique</strong> lui permet de consulter
+                  l'avancement de son dossier sans jamais révéler son identité
+                  aux équipes de traitement.
+                </p>
+              </article>
+            </div>
+
+            <!-- Argument 3 : Sécurité technique -->
+            <div class="col-lg-4 col-md-6 col-12">
+              <article class="argument-card" aria-label="Sécurité des données">
+                <h3 class="argument-title">Données chiffrées et tracées</h3>
+                <p class="argument-text">
+                  Toutes les données sont <strong>chiffrées en base</strong> et
+                  les échanges transitent uniquement en <strong>HTTPS</strong>.
+                  Un journal d'audit horodaté et inaltérable enregistre chaque
+                  action sur les dossiers pour une traçabilité totale.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+             BANDEAU DE RÉASSURANCE LÉGALE
+             ============================================================ -->
+      <section
+        class="legal-banner"
+        aria-label="Rappel réglementaire et accès rapide"
+      >
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 text-center">
+              <p class="legal-text">
+                <strong>Obligation légale depuis 2017 :</strong> toute
+                entreprise de plus de 50 salariés est tenue de mettre en place
+                un dispositif de recueil des alertes internes (loi Sapin 2, art.
+                8). Ce dispositif doit garantir la confidentialité de l'auteur
+                et des faits signalés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+         PIED DE PAGE
+         ============================================================ -->
+    <footer class="site-footer">
+      <div class="container text-center py-3">
+        <small>
+          HRComplianceTech &copy; 2026 &mdash; Solution conforme RGPD &amp; Loi
+          Sapin 2 &mdash;
+          <a
+            href="mentions-legales.html"
+            style="color: rgba(255, 255, 255, 0.7); text-decoration: underline"
+            >Mentions légales</a
+          >
+        </small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS requis pour le menu hamburger sur mobile -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

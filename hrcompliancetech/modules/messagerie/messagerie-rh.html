@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRComplianceTech – Messagerie sécurisée – Dossier HRC-1042</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ============================================================
+         BARRE DE NAVIGATION – ESPACE RH
+         ============================================================ -->
+    <nav class="navbar navbar-expand-md site-navbar" aria-label="Navigation principale">
+        <div class="container-fluid px-4">
+
+            <a class="navbar-brand brand" href="../../index.html" aria-label="Accueil HRComplianceTech">
+                <span class="brand-hr">HR</span><span class="brand-compliance">ComplianceTech</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu-messagerie-rh"
+                aria-controls="menu-messagerie-rh"
+                aria-expanded="false"
+                aria-label="Ouvrir le menu"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu-messagerie-rh">
+                <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="../../dashboards/dashboard.html">
+                            Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-connexion" href="../../auth/connexion.html">
+                            Déconnexion
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         CONTENU PRINCIPAL
+         ============================================================ -->
+    <main class="dashboard-main">
+        <div class="container-fluid px-4">
+
+            <!-- En-tête de la page -->
+            <header class="dossier-entete">
+                <a href="../../dashboards/dashboard.html" class="lien-retour">
+                    &larr; Retour au tableau de bord
+                </a>
+
+                <div class="dossier-entete-titre-ligne">
+                    <div>
+                        <h1 class="dossier-titre">
+                            Messagerie sécurisée &mdash; Dossier #HRC-1042
+                        </h1>
+                        <p class="dossier-sous-titre">
+                            Échanges confidentiels avec le lanceur d'alerte &mdash;
+                            Dernière activité le 15 mai 2025 à 16h05
+                        </p>
+                    </div>
+                    <!--
+                        Lien discret vers le détail complet du dossier.
+                        Style secondaire : pas de fond coloré, simple lien souligné.
+                    -->
+                    <a href="/modules/dossier/dossier.html?ref=HRC-1042" class="lien-retour" style="margin-bottom: 0; align-self: center;">
+                        Voir les détails du dossier &rarr;
+                    </a>
+                </div>
+            </header>
+
+            <!-- Grille : rappel (4/12) + messagerie (8/12) -->
+            <div class="row g-4 align-items-start">
+
+                <!-- ================================================
+                     COLONNE GAUCHE : Rappel du dossier (4/12)
+                     ================================================ -->
+                <div class="col-12 col-lg-4">
+                    <div class="dossier-section suivi-recap-carte">
+
+                        <h2 class="dossier-section-titre">Rappel du dossier</h2>
+
+                        <dl class="infos-liste">
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Référence</dt>
+                                <dd class="infos-valeur cellule-ref">HRC-1042</dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Date de dépôt</dt>
+                                <dd class="infos-valeur">14 mai 2025</dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Catégorie</dt>
+                                <dd class="infos-valeur">Harcèlement moral ou sexuel</dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Statut</dt>
+                                <dd class="infos-valeur">
+                                    <span class="statut statut-en-cours">En cours</span>
+                                </dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Priorité</dt>
+                                <dd class="infos-valeur">
+                                    <span class="priorite priorite-haute">HAUTE</span>
+                                </dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Lanceur d'alerte</dt>
+                                <dd class="infos-valeur"><strong>Anonyme</strong></dd>
+                            </div>
+                            <div class="infos-ligne">
+                                <dt class="infos-cle">Responsable</dt>
+                                <dd class="infos-valeur">C. Moreau (RH)</dd>
+                            </div>
+                        </dl>
+
+                        <!-- Rappel de règle de confidentialité -->
+                        <div class="suivi-protection-encart" style="margin-top: 1.25rem;">
+                            <p class="suivi-protection-texte">
+                                Ne mentionnez aucun élément susceptible d'identifier le lanceur
+                                d'alerte dans vos messages. Conformité
+                                <strong>loi Sapin 2</strong> obligatoire.
+                            </p>
+                        </div>
+
+                        <!-- Lien vers le dossier complet -->
+                        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--gris-bordure);">
+                            <a href="/modules/dossier/dossier.html?ref=HRC-1042" class="lien-retour" style="margin-bottom: 0;">
+                                Accéder au dossier complet &rarr;
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ================================================
+                     COLONNE DROITE : Interface de messagerie (8/12)
+                     ================================================ -->
+                <div class="col-12 col-lg-8">
+                    <div class="dossier-section messagerie-carte">
+
+                        <h2 class="dossier-section-titre">
+                            Échanges avec le lanceur d'alerte
+                        </h2>
+
+                        <!-- Zone d'affichage des messages -->
+                        <div
+                            id="zone-messages-messagerie-rh"
+                            class="messagerie-zone"
+                            aria-label="Historique des messages avec le lanceur d'alerte"
+                            aria-live="polite"
+                        >
+
+                            <!--
+                                PERSPECTIVE RH — INVERSION PAR RAPPORT À suivi.html :
+
+                                Sur suivi.html (vue salarié) :
+                                  - Le salarié est l'expéditeur  → .message-envoye (droite)
+                                  - Le RH est le destinataire    → .message-recu   (gauche)
+
+                                Sur cette page (vue RH) :
+                                  - Le salarié est l'expéditeur  → .message-recu   (gauche)
+                                  - Le RH est l'expéditeur       → .message-envoye (droite)
+
+                                Les classes CSS sont identiques. Seule l'attribution des rôles
+                                change selon la perspective de l'utilisateur connecté.
+                            -->
+
+                            <!-- Message reçu : envoyé par le lanceur d'alerte (vue RH) -->
+                            <article class="message message-recu" aria-label="Message reçu du lanceur d'alerte">
+                                <header class="message-entete">
+                                    <span class="message-expediteur">Salarié Anonyme</span>
+                                    <time class="message-date" datetime="2025-05-14T09:47">
+                                        14 mai 2025 à 09h47
+                                    </time>
+                                </header>
+                                <div class="message-corps">
+                                    <p>
+                                        Bonjour,
+                                    </p>
+                                    <p>
+                                        Je souhaite préciser ma déclaration initiale. Les faits que
+                                        j'ai décrits se sont répétés à plusieurs reprises depuis le
+                                        mois de mars. J'ai joint trois pièces à mon dossier, dont
+                                        un courriel daté du 21 avril dans lequel les reproches sont
+                                        formulés explicitement par écrit.
+                                    </p>
+                                    <p>
+                                        Je reste disponible pour toute précision supplémentaire.
+                                    </p>
+                                    <p>
+                                        Cordialement.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <!-- Message envoyé : réponse précédente du service RH (vue RH) -->
+                            <article class="message message-envoye" aria-label="Message envoyé par le service RH">
+                                <header class="message-entete">
+                                    <span class="message-expediteur">Service RH — C. Moreau</span>
+                                    <time class="message-date" datetime="2025-05-15T14:30">
+                                        15 mai 2025 à 14h30
+                                    </time>
+                                </header>
+                                <div class="message-corps">
+                                    <p>
+                                        Madame, Monsieur,
+                                    </p>
+                                    <p>
+                                        Nous avons bien pris connaissance de votre message et nous
+                                        vous remercions pour ces éléments complémentaires. Nous avons
+                                        examiné les pièces jointes transmises avec votre signalement
+                                        initial.
+                                    </p>
+                                    <p>
+                                        Afin de compléter l'instruction de votre dossier, pourriez-vous
+                                        nous indiquer si d'autres membres de votre équipe ont été
+                                        témoins des faits que vous décrivez ?
+                                    </p>
+                                    <p>
+                                        Nous restons à votre disposition. Cordialement.
+                                    </p>
+                                </div>
+                            </article>
+
+                        </div>
+                        <!-- fin zone-messages-messagerie-rh -->
+
+                        <hr class="connexion-separateur">
+
+                        <!-- Zone de saisie d'un nouveau message -->
+                        <form id="form-messagerie-rh-page" novalidate>
+                            <div class="champ-groupe">
+                                <label for="nouveau-message-messagerie-rh" class="form-label">
+                                    Votre réponse
+                                </label>
+                                <textarea
+                                    id="nouveau-message-messagerie-rh"
+                                    name="message"
+                                    class="form-control custom-input"
+                                    rows="4"
+                                    placeholder="Rédigez votre réponse à destination du lanceur d'alerte. Tous les échanges sont chiffrés et confidentiels."
+                                    required
+                                    aria-describedby="erreur-messagerie-rh-page"
+                                ></textarea>
+                                <span
+                                    id="erreur-messagerie-rh-page"
+                                    class="champ-erreur"
+                                    role="alert"
+                                    aria-live="polite"
+                                ></span>
+                            </div>
+
+                            <div class="messagerie-actions">
+                                <p class="messagerie-avertissement">
+                                    Ce message sera transmis anonymement au lanceur d'alerte.
+                                    Aucune information identificatrice ne doit y figurer.
+                                </p>
+                                <button type="submit" class="btn-submit messagerie-btn-envoi">
+                                    Envoyer le message
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+                <!-- fin colonne droite -->
+
+            </div>
+            <!-- fin grille -->
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+         PIED DE PAGE
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container-fluid px-4 text-center py-3">
+            <small>
+                HRComplianceTech &copy; 2025 &mdash;
+                Échanges chiffrés &mdash; Conformité RGPD &amp; Loi Sapin 2
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>

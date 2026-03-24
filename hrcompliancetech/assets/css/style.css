@@ -1,0 +1,3635 @@
+/* ============================================================
+   HRComplianceTech – style.css
+   Page : Dépôt de signalement
+   ============================================================ */
+
+/* --- Variables de la charte graphique --- */
+:root {
+  --blanc: #ffffff;
+  --noir: #1a1a1a;
+  --gris-texte: #4a4a4a;
+  --gris-clair: #f7f8fa;
+  --gris-bordure: #d8dce4;
+  --bleu-marine: #1b3a6b;
+  --bleu-hover: #142d55;
+  --bleu-clair: #eef2f9;
+  --rouge-erreur: #c0392b;
+  --vert-succes: #1a6b3a;
+
+  --rayon: 6px;
+  --transition: 0.2s ease;
+}
+
+/* --- Reset de base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--gris-clair);
+  color: var(--noir);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   EN-TÊTE
+   ============================================================ */
+.site-header {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+  border-bottom: 3px solid var(--bleu-hover);
+}
+
+.brand {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-hr {
+  color: var(--blanc);
+  font-weight: 700;
+}
+
+.brand-compliance {
+  color: #a8c0e8;
+  font-weight: 600;
+}
+
+.header-tagline {
+  font-size: 0.8rem;
+  color: #a8c0e8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   BLOC D'INTRODUCTION
+   ============================================================ */
+.intro-block {
+  border-left: 4px solid var(--bleu-marine);
+  padding-left: 1.2rem;
+}
+
+.form-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.75rem;
+  color: var(--bleu-marine);
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: var(--gris-texte);
+  font-size: 0.93rem;
+}
+
+/* ============================================================
+   BLOCS DE FORMULAIRE (fieldset)
+   ============================================================ */
+.form-block {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.block-legend {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bleu-marine);
+  background-color: var(--blanc);
+  padding: 0 0.5rem;
+  float: none;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   CHAMPS DE FORMULAIRE
+   ============================================================ */
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--noir);
+  margin-bottom: 0.4rem;
+}
+
+.required {
+  color: var(--rouge-erreur);
+  font-weight: 700;
+}
+
+/* Style unifié pour input, select, textarea */
+.custom-input {
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 0.55rem 0.85rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  color: var(--noir);
+  background-color: var(--blanc);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+  width: 100%;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--bleu-marine);
+  box-shadow: 0 0 0 3px rgba(27, 58, 107, 0.12);
+}
+
+textarea.custom-input {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+  margin-top: 0.4rem;
+}
+
+/* ============================================================
+   BOUTONS RADIO – Choix anonymat
+   ============================================================ */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.radio-option:hover {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/* Mise en valeur de l'option cochée */
+.radio-option:has(input:checked) {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+.radio-option input[type="radio"] {
+  margin-top: 0.2rem;
+  accent-color: var(--bleu-marine);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.radio-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.radio-label strong {
+  color: var(--noir);
+}
+
+.radio-label small {
+  color: var(--gris-texte);
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+}
+
+/* ============================================================
+   CHAMPS IDENTITÉ (affichés/masqués par JS)
+   ============================================================ */
+.identity-fields {
+  display: none; /* Masqué par défaut */
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--gris-bordure);
+  animation: glisser-bas 0.25s ease forwards;
+}
+
+/* Classe ajoutée par JS pour rendre les champs visibles */
+.identity-fields.visible {
+  display: block;
+}
+
+@keyframes glisser-bas {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   MESSAGE D'ERREUR
+   ============================================================ */
+.error-message {
+  display: none; /* Masqué par défaut, affiché par JS si erreur */
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--rouge-erreur);
+  background-color: #fdf0ef;
+  color: var(--rouge-erreur);
+  font-size: 0.85rem;
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+}
+
+.error-message.visible {
+  display: block;
+}
+
+/* ============================================================
+   MESSAGE DE CONFIRMATION
+   ============================================================ */
+.confirmation-block {
+  display: none;
+  padding: 1rem 1.2rem;
+  border-left: 4px solid var(--vert-succes);
+  background-color: #eef7f2;
+  color: var(--vert-succes);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation-block.visible {
+  display: block;
+}
+
+/* ============================================================
+   BOUTON SOUMETTRE
+   ============================================================ */
+.form-actions {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.btn-submit {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+  border: none;
+  border-radius: var(--rayon);
+  padding: 0.8rem 2.5rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.btn-submit:hover {
+  background-color: var(--bleu-hover);
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rgpd-notice {
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  margin-top: 1rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   PIED DE PAGE
+   ============================================================ */
+.site-footer {
+  background-color: var(--bleu-marine);
+  color: #a8c0e8;
+  font-size: 0.78rem;
+}
+
+/* ============================================================
+   RESPONSIVE – ajustements mobiles
+   ============================================================ */
+@media (max-width: 576px) {
+  .form-title {
+    font-size: 1.35rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+
+  .header-tagline {
+    display: none;
+  }
+}
+
+/* ============================================================
+   LANDING PAGE – BARRE DE NAVIGATION
+   ============================================================ */
+
+.site-navbar {
+  background-color: var(--bleu-marine);
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  /* Ombre légère pour séparer la nav du contenu */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Lien de navigation standard */
+.nav-link-custom {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem !important;
+  border-radius: var(--rayon);
+  transition:
+    color var(--transition),
+    background-color var(--transition);
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+  color: var(--blanc) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Lien "Connexion" mis en valeur comme un bouton secondaire */
+.nav-link-connexion {
+  color: var(--blanc) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 1.1rem !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--rayon);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.nav-link-connexion:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--blanc);
+}
+
+/* Couleur du bouton hamburger Bootstrap sur fond sombre */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-toggler-icon {
+  /* Icône hamburger en blanc pour contraste sur fond bleu marine */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================================
+   LANDING PAGE – SECTION HERO
+   ============================================================ */
+
+.landing-body {
+  background-color: var(--blanc);
+}
+
+.hero-section {
+  background-color: var(--gris-clair);
+  padding: 5rem 0 4.5rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* Pastille réglementaire au-dessus du titre */
+.compliance-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+  border: 1px solid #c2d3f0;
+  border-radius: 4px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--gris-texte);
+  max-width: 540px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+/* Bouton d'action principal de la landing page */
+.btn-hero-primary {
+  display: inline-block;
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 2.4rem;
+  border-radius: var(--rayon);
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+  box-shadow: 0 4px 14px rgba(27, 58, 107, 0.25);
+}
+
+.btn-hero-primary:hover {
+  background-color: var(--bleu-hover);
+  color: var(--blanc);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 58, 107, 0.35);
+}
+
+.btn-hero-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--bleu-marine);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 2.4rem;
+  border-radius: var(--rayon);
+  border: 2px solid var(--bleu-marine);
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.btn-hero-secondary:hover {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+}
+
+.hero-mention {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--gris-texte);
+}
+
+.lien-discret {
+  color: var(--bleu-marine);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lien-discret:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   LANDING PAGE – SECTION ARGUMENTS
+   ============================================================ */
+
+.arguments-section {
+  padding: 4rem 0;
+  background-color: var(--blanc);
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: var(--bleu-marine);
+  font-weight: 600;
+}
+
+/* Carte argument standard */
+.argument-card {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 2rem 1.75rem;
+  height: 100%;
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.argument-card:hover {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Carte mise en avant (argument central) */
+.argument-card--featured {
+  border-color: var(--bleu-marine);
+  border-width: 2px;
+  background-color: var(--bleu-clair);
+}
+
+.argument-icon {
+  color: var(--bleu-marine);
+  margin-bottom: 1rem;
+}
+
+.argument-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--noir);
+  margin-bottom: 0.6rem;
+}
+
+.argument-text {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============================================================
+   LANDING PAGE – BANDEAU LÉGAL
+   ============================================================ */
+
+.legal-banner {
+  background-color: var(--gris-clair);
+  border-top: 1px solid var(--gris-bordure);
+  border-bottom: 1px solid var(--gris-bordure);
+  padding: 2rem 0;
+}
+
+.legal-text {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.btn-legal-cta {
+  display: inline-block;
+  color: var(--bleu-marine);
+  border: 1.5px solid var(--bleu-marine);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: var(--rayon);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.btn-legal-cta:hover {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+}
+
+/* ============================================================
+   LANDING PAGE – RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  /* Sur mobile, le menu déroulant s'ouvre sous la navbar */
+  #menu-principal {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-link-connexion {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  .btn-hero-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   PAGE CONNEXION – MISE EN PAGE GENERALE
+   ============================================================ */
+
+/* Le body de la page connexion centre son contenu verticalement */
+.connexion-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main prend tout l'espace vertical restant entre la navbar et le footer */
+.connexion-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CARTE DE FORMULAIRE
+   ============================================================ */
+
+.connexion-card {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 2.5rem 2.25rem;
+  /* Ombre légère pour détacher la carte du fond */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  margin-bottom: 1rem;
+}
+
+/* En-tête de la carte */
+.connexion-card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.connexion-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+  border: 1px solid #c2d3f0;
+  border-radius: 20px;
+  padding: 0.25rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.connexion-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+.connexion-subtitle {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin: 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CHAMPS DU FORMULAIRE
+   ============================================================ */
+
+.champ-groupe {
+  margin-bottom: 1.25rem;
+}
+
+/* Ligne label + lien "Mot de passe oublié" sur la même ligne */
+.label-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+/* On réinitialise la marge du label quand il est dans label-ligne */
+.label-ligne .form-label {
+  margin-bottom: 0;
+}
+
+.lien-mdp-oublie {
+  font-size: 0.78rem;
+  color: var(--bleu-marine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.lien-mdp-oublie:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON AFFICHER/MASQUER MOT DE PASSE
+   ============================================================ */
+
+/* Conteneur relatif : permet de positionner le bouton en absolu à l'intérieur */
+.input-mdp-conteneur {
+  position: relative;
+}
+
+/* Le champ mot de passe avec padding-right pour que le texte ne passe pas sous le bouton */
+.input-avec-bouton {
+  padding-right: 6rem;
+}
+
+/* Bouton positionné à l'intérieur du champ, aligné verticalement au centre */
+.btn-toggle-mdp {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--bleu-marine);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
+  /* On isole ce bouton du flux de tabulation du formulaire via son ordre naturel */
+}
+
+.btn-toggle-mdp:hover {
+  color: var(--bleu-hover);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   PAGE CONNEXION – MESSAGES D'ERREUR
+   ============================================================ */
+
+/* Erreur sous un champ individuel */
+.champ-erreur {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--rouge-erreur);
+  margin-top: 0.35rem;
+}
+
+.champ-erreur.visible {
+  display: block;
+}
+
+/* Erreur globale (ex: mauvais identifiants reçus du serveur) */
+.erreur-globale {
+  display: none;
+  padding: 0.65rem 0.9rem;
+  border-left: 3px solid var(--rouge-erreur);
+  background-color: #fdf0ef;
+  color: var(--rouge-erreur);
+  font-size: 0.85rem;
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  margin-bottom: 1.25rem;
+}
+
+.erreur-globale.visible {
+  display: block;
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON DE SOUMISSION
+   ============================================================ */
+
+.btn-connexion-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – NOTE DE SECURITE SOUS LA CARTE
+   ============================================================ */
+
+.note-securite {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  line-height: 1.5;
+  padding: 0 0.5rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – LIEN CONNEXION ACTIF DANS LA NAVBAR
+   Le bouton "Connexion" dans la nav prend un fond plein quand actif
+   ============================================================ */
+
+.nav-link-connexion.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--blanc);
+  color: var(--blanc) !important;
+}
+
+/* ============================================================
+   PAGE CONNEXION – MISE EN PAGE GENERALE
+   ============================================================ */
+
+.connexion-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main occupe tout l'espace entre la navbar et le footer */
+.connexion-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – BANDEAU ACCES RESTREINT
+   Encart rectangulaire sobre, pas de bulle, bordure gauche
+   ============================================================ */
+
+.acces-restreint-bandeau {
+  border-left: 3px solid var(--bleu-marine);
+  background-color: var(--bleu-clair);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.82rem;
+  color: var(--gris-texte);
+  margin-bottom: 0.85rem;
+  /* Angles stricts : 0 à droite, léger arrondi à droite uniquement */
+  border-radius: 0 4px 4px 0;
+}
+
+.acces-restreint-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CARTE
+   Angles stricts, ombre légère, aucun effet décoratif
+   ============================================================ */
+
+.connexion-card {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+.connexion-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+.connexion-subtitle {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CHAMPS
+   ============================================================ */
+
+.champ-groupe {
+  margin-bottom: 1.25rem;
+}
+
+/* Label et lien "oublié" sur la même ligne */
+.label-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.label-ligne .form-label {
+  margin-bottom: 0;
+}
+
+.lien-mdp-oublie {
+  font-size: 0.78rem;
+  color: var(--bleu-marine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.lien-mdp-oublie:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON AFFICHER/MASQUER MOT DE PASSE
+   ============================================================ */
+
+/* Conteneur relatif pour que le bouton puisse être positionné en absolu */
+.input-mdp-conteneur {
+  position: relative;
+}
+
+/* Padding à droite pour que le texte tapé ne passe pas sous le bouton */
+.input-avec-bouton {
+  padding-right: 6rem;
+}
+
+.btn-toggle-mdp {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--bleu-marine);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  padding: 0.2rem 0.25rem;
+  /* Pas de border-radius décoratif */
+  border-radius: 0;
+}
+
+.btn-toggle-mdp:hover {
+  color: var(--bleu-hover);
+  text-decoration: underline;
+}
+
+/* Focus visible pour l'accessibilité clavier */
+.btn-toggle-mdp:focus-visible {
+  outline: 2px solid var(--bleu-marine);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   PAGE CONNEXION – MESSAGES D'ERREUR
+   ============================================================ */
+
+.champ-erreur {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--rouge-erreur);
+  margin-top: 0.35rem;
+}
+
+.champ-erreur.visible {
+  display: block;
+}
+
+.erreur-globale {
+  display: none;
+  padding: 0.65rem 0.9rem;
+  border-left: 3px solid var(--rouge-erreur);
+  background-color: #fdf0ef;
+  color: var(--rouge-erreur);
+  font-size: 0.85rem;
+  /* Angle droit à gauche (côté bordure), léger arrondi à droite */
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 1.25rem;
+}
+
+.erreur-globale.visible {
+  display: block;
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON SE CONNECTER
+   ============================================================ */
+
+.btn-connexion-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – NOTE DE SECURITE SOUS LA CARTE
+   ============================================================ */
+
+.note-securite {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  line-height: 1.5;
+  padding: 0 0.5rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – ETAT ACTIF DU LIEN CONNEXION DANS LA NAVBAR
+   ============================================================ */
+
+.nav-link-connexion.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--blanc);
+  color: var(--blanc) !important;
+}
+
+/* ============================================================
+   PAGE CONNEXION – RESPONSIVE MOBILE
+   ============================================================ */
+
+@media (max-width: 576px) {
+  .connexion-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .connexion-main {
+    align-items: flex-start;
+    padding-top: 1.5rem;
+  }
+}
+
+/* ============================================================
+   PAGE CONNEXION – MISE EN PAGE
+   ============================================================ */
+
+/* Le body occupe toute la hauteur pour centrer verticalement la carte */
+.connexion-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* main prend tout l'espace libre entre la navbar et le footer */
+.connexion-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – BANDEAU ACCES RESTREINT
+   Encart sobre : bordure gauche, fond bleu très clair, angles droits
+   ============================================================ */
+
+.acces-restreint-bandeau {
+  border-left: 3px solid var(--bleu-marine);
+  background-color: var(--bleu-clair);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.82rem;
+  color: var(--gris-texte);
+  margin-bottom: 0.75rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CARTE
+   Angles stricts (4px max), ombre légère
+   ============================================================ */
+
+.connexion-card {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+/* On supprime l'ancienne règle connexion-entete qui créait un double trait */
+
+.connexion-acces-label {
+  color: var(--gris-texte);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.connexion-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.15rem;
+}
+
+.connexion-subtitle {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin-bottom: 0;
+}
+
+/* Trait de séparation unique sous l'en-tête */
+.connexion-separateur {
+  border: none;
+  border-top: 1px solid var(--gris-bordure);
+  margin: 1.25rem 0 1.5rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – CHAMPS
+   ============================================================ */
+
+.champ-groupe {
+  margin-bottom: 1.25rem;
+}
+
+/* Label et lien "Mot de passe oublié" sur la même ligne */
+.label-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.label-ligne .form-label {
+  margin-bottom: 0;
+}
+
+.lien-mdp-oublie {
+  font-size: 0.78rem;
+  color: var(--bleu-marine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.lien-mdp-oublie:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON AFFICHER / MASQUER
+   Positionné en absolu dans le champ, bouton texte sobre
+   ============================================================ */
+
+.input-mdp-conteneur {
+  position: relative;
+}
+
+/* Espace à droite pour que le texte tapé ne passe pas sous le bouton */
+.input-avec-bouton {
+  padding-right: 6rem;
+}
+
+.btn-toggle-mdp {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--bleu-marine);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  padding: 0.15rem 0.2rem;
+  border-radius: 0;
+}
+
+.btn-toggle-mdp:hover {
+  color: var(--bleu-hover);
+  text-decoration: underline;
+}
+
+/* Focus visible clavier pour l'accessibilité */
+.btn-toggle-mdp:focus-visible {
+  outline: 2px solid var(--bleu-marine);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   PAGE CONNEXION – MESSAGES D'ERREUR PAR CHAMP
+   ============================================================ */
+
+.champ-erreur {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--rouge-erreur);
+  margin-top: 0.35rem;
+}
+
+.champ-erreur.visible {
+  display: block;
+}
+
+/* Erreur globale : même style que les blocs d'erreur existants */
+.erreur-globale {
+  display: none;
+  padding: 0.65rem 0.9rem;
+  border-left: 3px solid var(--rouge-erreur);
+  background-color: #fdf0ef;
+  color: var(--rouge-erreur);
+  font-size: 0.85rem;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 1.25rem;
+}
+
+.erreur-globale.visible {
+  display: block;
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON SE CONNECTER
+   ============================================================ */
+
+.btn-connexion-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – NOTE DE SECURITE SOUS LA CARTE
+   ============================================================ */
+
+.note-securite {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  line-height: 1.5;
+  padding: 0 0.5rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION – ETAT ACTIF DU LIEN CONNEXION DANS LA NAVBAR
+   ============================================================ */
+
+.nav-link-connexion.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: var(--blanc);
+  color: var(--blanc) !important;
+}
+
+/* ============================================================
+   PAGE CONNEXION – RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 576px) {
+  .connexion-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .connexion-main {
+    align-items: flex-start;
+    padding-top: 1.5rem;
+  }
+}
+
+/* ============================================================
+   PAGE CONNEXION – SPLIT LOGIN : TITRE DE SECTION
+   ============================================================ */
+
+.split-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.4rem;
+}
+
+.split-sous-titre {
+  font-size: 0.9rem;
+  color: var(--gris-texte);
+  margin: 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION – SPLIT LOGIN : HAUTEUR EGALE DES CARTES
+   Sur grand écran, les deux cartes ont la même hauteur.
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .connexion-main .row {
+    align-items: stretch;
+  }
+
+  .connexion-main .connexion-card {
+    height: 100%;
+  }
+}
+
+/* ============================================================
+   PAGE CONNEXION – SÉLECTEUR DE PROFIL
+   ============================================================ */
+
+/* Classe utilitaire : masque un bloc (appliquée/retirée par JS) */
+.cache {
+  display: none;
+}
+
+/* Grands boutons de sélection de profil */
+.btn-profil {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.btn-profil:hover {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/* Souligne visuellement le dernier bouton sans marge basse */
+.btn-profil:last-of-type {
+  margin-bottom: 0;
+}
+
+.btn-profil-titre {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+.btn-profil-sous {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+}
+
+/* ============================================================
+   PAGE CONNEXION – BOUTON RETOUR
+   ============================================================ */
+
+.btn-retour {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--bleu-marine);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.btn-retour:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   PAGE DASHBOARD – MISE EN PAGE GÉNÉRALE
+   ============================================================ */
+
+.dashboard-body {
+  background-color: var(--gris-clair);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem 0 3rem;
+}
+
+/* ============================================================
+   PAGE DASHBOARD – EN-TÊTE
+   ============================================================ */
+
+.dashboard-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.dashboard-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+.dashboard-sous-titre {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin: 0;
+}
+
+.dashboard-compteur {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   PAGE DASHBOARD – BARRE DE FILTRES
+   ============================================================ */
+
+.filtres-bloc {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtre-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--noir);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.filtre-select {
+  font-size: 0.88rem;
+  border-radius: 4px;
+}
+
+.btn-reinit {
+  width: 100%;
+  background: none;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  color: var(--gris-texte);
+  font-size: 0.82rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  padding: 0.52rem 1rem;
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.btn-reinit:hover {
+  border-color: var(--bleu-marine);
+  color: var(--bleu-marine);
+}
+
+/* ============================================================
+   PAGE DASHBOARD – TABLEAU
+   ============================================================ */
+
+.tableau-bloc {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-signalements {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+/* En-têtes du tableau */
+.table-signalements thead tr {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+}
+
+.table-signalements thead th {
+  padding: 0.85rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Lignes de données */
+.table-signalements tbody tr {
+  border-bottom: 1px solid var(--gris-bordure);
+  transition: background-color var(--transition);
+}
+
+.table-signalements tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table-signalements tbody tr:hover {
+  background-color: var(--bleu-clair);
+}
+
+.table-signalements tbody td {
+  padding: 0.9rem 1rem;
+  color: var(--noir);
+  vertical-align: middle;
+}
+
+/* Référence du dossier : texte légèrement mis en avant */
+.cellule-ref {
+  font-weight: 600;
+  color: var(--bleu-marine);
+  font-family: "DM Mono", monospace;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   PAGE DASHBOARD – INDICATEURS DE PRIORITÉ (bordure gauche)
+   Aucun fond coloré, aucun badge. Uniquement une bordure latérale.
+   ============================================================ */
+
+.ligne-haute {
+  border-left: 3px solid #8b1a1a;
+}
+
+.ligne-normale {
+  border-left: 3px solid var(--gris-bordure);
+}
+
+/* ============================================================
+   PAGE DASHBOARD – TEXTES STATUT ET PRIORITÉ
+   Texte simple : couleur de police et poids uniquement.
+   Aucun fond coloré, aucune classe .badge Bootstrap.
+   ============================================================ */
+
+.statut {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statut-nouveau {
+  color: var(--bleu-marine);
+}
+
+.statut-en-cours {
+  color: #7a5c00;
+}
+
+.statut-clos {
+  color: var(--gris-texte);
+}
+
+.priorite {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.priorite-haute {
+  color: #8b1a1a;
+  letter-spacing: 0.05em;
+}
+
+.priorite-normale {
+  color: var(--gris-texte);
+}
+
+.priorite-basse {
+  color: #2e7d32;
+}
+
+/* ============================================================
+   PAGE DASHBOARD – BOUTON OUVRIR LE DOSSIER
+   ============================================================ */
+
+.btn-ouvrir {
+  display: inline-block;
+  color: var(--bleu-marine);
+  border: 1px solid var(--bleu-marine);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.btn-ouvrir:hover {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+}
+
+/* ============================================================
+   PAGE DASHBOARD – MESSAGE TABLEAU VIDE
+   ============================================================ */
+
+.tableau-vide {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  border-top: 1px solid var(--gris-bordure);
+}
+
+/* ============================================================
+   PAGE DASHBOARD – RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .dashboard-entete {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-titre {
+    font-size: 1.3rem;
+  }
+}
+
+/* ============================================================
+   PAGE DOSSIER – EN-TÊTE
+   ============================================================ */
+
+.lien-retour {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--bleu-marine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 1rem;
+  transition: color var(--transition);
+}
+
+.lien-retour:hover {
+  color: var(--bleu-hover);
+}
+
+.dossier-entete {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.dossier-entete-titre-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dossier-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.2rem;
+}
+
+.dossier-sous-titre {
+  font-size: 0.82rem;
+  color: var(--gris-texte);
+  margin: 0;
+}
+
+/* Encart statut actuel dans l'en-tête : bordure gauche, pas de fond coloré */
+.dossier-statut-encart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-left: 3px solid var(--gris-bordure);
+  padding-left: 1rem;
+}
+
+.dossier-statut-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gris-texte);
+  margin-bottom: 0.2rem;
+}
+
+/* ============================================================
+   PAGE DOSSIER – SECTIONS DE CONTENU
+   ============================================================ */
+
+.dossier-section {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.dossier-section-titre {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--bleu-marine);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* ============================================================
+   PAGE DOSSIER – LISTE DE DÉFINITIONS (dl/dt/dd)
+   Utilisée pour les informations générales et l'identité.
+   ============================================================ */
+
+.infos-liste {
+  margin: 0;
+}
+
+.infos-ligne {
+  display: flex;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--gris-bordure);
+  align-items: baseline;
+}
+
+.infos-ligne:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.infos-cle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gris-texte);
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.infos-valeur {
+  font-size: 0.88rem;
+  color: var(--noir);
+  margin: 0;
+}
+
+/* ============================================================
+   PAGE DOSSIER – DESCRIPTION DES FAITS
+   blockquote sémantique, fond gris très léger, aucun fond coloré vif
+   ============================================================ */
+
+.description-faits {
+  background-color: var(--gris-clair);
+  border-left: 3px solid var(--gris-bordure);
+  border-radius: 0 4px 4px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--noir);
+  line-height: 1.75;
+}
+
+.description-faits p {
+  margin-bottom: 0.85rem;
+}
+
+.description-faits p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE DOSSIER – PIÈCES JOINTES
+   ============================================================ */
+
+.pieces-jointes-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.piece-jointe-ligne {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--gris-bordure);
+  font-size: 0.85rem;
+}
+
+.piece-jointe-ligne:last-child {
+  border-bottom: none;
+}
+
+/* Type de fichier : texte seul, police monospace, couleur bleu marine */
+.piece-jointe-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: "DM Mono", monospace;
+  color: var(--bleu-marine);
+  min-width: 32px;
+  letter-spacing: 0.04em;
+}
+
+.piece-jointe-lien {
+  color: var(--bleu-marine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  flex: 1;
+  transition: color var(--transition);
+}
+
+.piece-jointe-lien:hover {
+  color: var(--bleu-hover);
+}
+
+.piece-jointe-poids {
+  color: var(--gris-texte);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   PAGE DOSSIER – BLOC ACTIONS (colonne droite)
+   ============================================================ */
+
+.actions-bloc {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1.5rem;
+  /* Sticky sur desktop : le panneau reste visible pendant le défilement */
+  position: sticky;
+  top: 80px;
+}
+
+.actions-titre {
+  /* Même style que les titres de section, cohérence visuelle */
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   PAGE DOSSIER – MESSAGE DE CONFIRMATION
+   Affiché temporairement par JS après la sauvegarde.
+   ============================================================ */
+
+.message-confirmation {
+  padding: 0.65rem 0.9rem;
+  border-left: 3px solid var(--vert-succes);
+  background-color: #eef7f2;
+  color: var(--vert-succes);
+  font-size: 0.85rem;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   PAGE DOSSIER – JOURNAL D'AUDIT
+   ============================================================ */
+
+.audit-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.audit-ligne {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--gris-bordure);
+  font-size: 0.8rem;
+}
+
+.audit-ligne:last-child {
+  border-bottom: none;
+}
+
+.audit-date {
+  font-weight: 600;
+  color: var(--gris-texte);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.audit-action {
+  color: var(--noir);
+}
+
+/* ============================================================
+   PAGE DOSSIER – RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 992px) {
+  /* Sur tablette/mobile, le bloc actions n'est plus sticky */
+  .actions-bloc {
+    position: static;
+  }
+
+  .infos-cle {
+    min-width: 140px;
+  }
+
+  .dossier-statut-encart {
+    align-items: flex-start;
+    border-left: none;
+    border-top: 1px solid var(--gris-bordure);
+    padding-left: 0;
+    padding-top: 0.75rem;
+  }
+}
+
+/* ============================================================
+   PAGE SUIVI – EN-TÊTE : STATUT EN TEXTE
+   ============================================================ */
+
+.suivi-statut-texte {
+  font-size: 0.9rem;
+  color: var(--gris-texte);
+  margin: 0.2rem 0 0;
+}
+
+/* ============================================================
+   PAGE SUIVI – COLONNE GAUCHE : RÉCAPITULATIF
+   ============================================================ */
+
+.suivi-recap-carte {
+  /* Position sticky : la carte reste visible pendant le défilement de la messagerie */
+  position: sticky;
+  top: 80px;
+}
+
+.suivi-extrait {
+  margin-top: 1.25rem;
+}
+
+.suivi-extrait-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gris-texte);
+  margin-bottom: 0.5rem;
+}
+
+/* Version compacte de la blockquote pour le récapitulatif */
+.suivi-description-courte {
+  font-size: 0.82rem;
+  padding: 0.85rem 1rem;
+  margin: 0;
+  color: var(--gris-texte);
+  font-style: italic;
+}
+
+/* Encart de protection légale : bordure gauche bleu marine, sobre */
+.suivi-protection-encart {
+  margin-top: 1.25rem;
+  border-left: 3px solid var(--bleu-marine);
+  padding-left: 0.85rem;
+}
+
+.suivi-protection-texte {
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PAGE SUIVI – MESSAGERIE : ZONE D'AFFICHAGE
+   ============================================================ */
+
+.messagerie-carte {
+  /* Pas de sticky sur la messagerie : elle peut être longue */
+}
+
+/* Conteneur scrollable des messages */
+.messagerie-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 420px;
+  overflow-y: auto;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  margin-bottom: 0.5rem;
+  /* Scrollbar discrète */
+  scrollbar-width: thin;
+  scrollbar-color: var(--gris-bordure) transparent;
+}
+
+/* ============================================================
+   PAGE SUIVI – MESSAGERIE : BLOCS DE MESSAGES
+   Aucune bulle, angles stricts, différenciation par alignement
+   et très légère nuance de fond.
+   ============================================================ */
+
+.message {
+  border-radius: 4px;
+  padding: 1rem 1.15rem;
+  max-width: 85%;
+}
+
+.message-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.message-expediteur {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--noir);
+  letter-spacing: 0.02em;
+}
+
+.message-date {
+  font-size: 0.72rem;
+  color: var(--gris-texte);
+}
+
+.message-corps {
+  font-size: 0.88rem;
+  color: var(--noir);
+  line-height: 1.65;
+}
+
+.message-corps p {
+  margin-bottom: 0.5rem;
+}
+
+.message-corps p:last-child {
+  margin-bottom: 0;
+}
+
+/* Message reçu (service RH) : aligné à gauche, fond gris très léger */
+.message-recu {
+  align-self: flex-start;
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-left: 3px solid var(--gris-texte);
+}
+
+/* Message envoyé (salarié) : aligné à droite, fond blanc, bordure bleu marine */
+.message-envoye {
+  align-self: flex-end;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-left: 3px solid var(--bleu-marine);
+}
+
+/* ============================================================
+   PAGE SUIVI – MESSAGERIE : ZONE DE SAISIE
+   ============================================================ */
+
+.messagerie-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.messagerie-avertissement {
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.45;
+}
+
+.messagerie-btn-envoi {
+  white-space: nowrap;
+  padding: 0.65rem 1.5rem;
+}
+
+/* ============================================================
+   PAGE SUIVI – RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .suivi-recap-carte {
+    position: static;
+  }
+
+  .messagerie-zone {
+    max-height: 320px;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+
+  .messagerie-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .messagerie-btn-envoi {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   TABLEAU DE BORD – BOUTON MESSAGERIE (colonne Actions)
+   Style outline sobre : bordure gris foncé, fond transparent.
+   Volontairement moins proéminent que .btn-ouvrir pour établir
+   une hiérarchie visuelle claire entre les deux actions.
+   ============================================================ */
+
+.btn-messagerie {
+  display: inline-block;
+  color: var(--gris-texte);
+  border: 1px solid var(--gris-bordure);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.btn-messagerie:hover {
+  border-color: var(--bleu-marine);
+  color: var(--bleu-marine);
+}
+
+/* ============================================================
+   PAGE DOSSIER JURISTE – TEXTAREA ANNOTATIONS
+   Plus haute que les textarea standard pour accueillir
+   des annotations juridiques détaillées.
+   ============================================================ */
+
+.annotations-textarea {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  resize: vertical; /* L'utilisateur peut agrandir verticalement si besoin */
+}
+
+/* ============================================================
+   PAGE DOSSIER JURISTE – SECTION VALIDATION DE CLÔTURE
+   ============================================================ */
+
+.validation-cloture-bloc {
+  margin-bottom: 0;
+}
+
+/*
+    Bouton de validation de clôture : fond bleu marine plein,
+    pleine largeur, avec une mention secondaire en dessous du libellé.
+    C'est l'action la plus engageante de la page son style doit
+    le refléter sans pour autant utiliser de couleur d'alerte (rouge).
+*/
+.btn-cloture-juriste {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  line-height: 1.3;
+}
+
+/* Mention légale sous le libellé principal du bouton */
+.btn-cloture-mention {
+  font-size: 0.7rem;
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   TABLEAU DE BORD JURISTE – COULEURS DE STATUT SPÉCIFIQUES
+   Trois nouveaux statuts propres au contexte juridique.
+   Même convention que les statuts RH : couleur de police seule,
+   aucun fond coloré, aucun badge.
+   ============================================================ */
+
+/* "En attente de validation légale" : bleu marine action requise du juriste */
+.statut-attente-validation {
+  color: var(--bleu-marine);
+  font-weight: 700;
+}
+
+/* "En cours d'analyse" : même teinte ambrée que statut-en-cours */
+.statut-en-cours-analyse {
+  color: #7a5c00;
+  font-weight: 600;
+}
+
+/* "Clos (Validé)" : gris sobre dossier traité et archivé */
+.statut-clos-valide {
+  color: var(--gris-texte);
+  font-weight: 400;
+}
+
+/* ============================================================
+   PAGE DOSSIER JURISTE – HISTORIQUE DES ANNOTATIONS
+   ============================================================ */
+
+.annotations-historique {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* Chaque annotation passée : bloc sobre, fond gris très léger */
+.annotation-entree {
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-left: 3px solid var(--bleu-marine);
+  border-radius: 0 4px 4px 0;
+  padding: 0.9rem 1.1rem;
+}
+
+.annotation-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.annotation-auteur {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  letter-spacing: 0.02em;
+}
+
+.annotation-corps {
+  font-size: 0.86rem;
+  color: var(--noir);
+  line-height: 1.65;
+}
+
+.annotation-corps p {
+  margin-bottom: 0.4rem;
+}
+
+.annotation-corps p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE DOSSIER JURISTE – BLOC D'AVERTISSEMENT FORMEL
+   Texte seul, bordure gauche sombre. Aucun fond coloré.
+   ============================================================ */
+
+.avertissement-juridique {
+  border-left: 3px solid var(--noir);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--gris-clair);
+  border-radius: 0 4px 4px 0;
+}
+
+.avertissement-juridique-texte {
+  font-size: 0.82rem;
+  color: var(--noir);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.avertissement-juridique-texte:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE LOGS D'AUDIT – TABLEAU
+   Variante plus compacte du tableau principal.
+   Police monospace sur les cellules techniques (IP, date).
+   ============================================================ */
+
+.table-logs .log-date {
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  color: var(--gris-texte);
+}
+
+.table-logs .log-ip {
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  white-space: nowrap;
+}
+
+.table-logs .log-utilisateur {
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.table-logs .log-role {
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  white-space: nowrap;
+}
+
+.table-logs .log-action {
+  font-size: 0.85rem;
+  color: var(--noir);
+}
+
+.table-logs .log-cible {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   PAGE LOGS D'AUDIT – BORDURES GAUCHES PAR TYPE D'ACTION
+   Convention visuelle sobre : la couleur de la bordure gauche
+   identifie le type d'action sans fond coloré ni badge.
+   ============================================================ */
+
+/* Connexion : bleu marine entrée/sortie dans le système */
+.log-connexion {
+  border-left: 3px solid var(--bleu-marine);
+}
+
+/* Lecture : gris neutre consultation sans modification */
+.log-lecture {
+  border-left: 3px solid var(--gris-bordure);
+}
+
+/* Modification : ambre changement d'état d'un dossier */
+.log-modification {
+  border-left: 3px solid #b8860b;
+}
+
+/* Clôture : rouge foncé acte irréversible */
+.log-cloture {
+  border-left: 3px solid #8b1a1a;
+}
+
+/* Export : bleu clair extraction de données */
+.log-export {
+  border-left: 3px solid #2e6da4;
+}
+
+/* ============================================================
+   PAGE LOGS D'AUDIT – NOTE D'INALTÉRABILITÉ
+   Encart informatif en bas de page, sobre et discret.
+   ============================================================ */
+
+.log-note-inalterable {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--bleu-marine);
+  background-color: var(--gris-clair);
+  border-radius: 0 4px 4px 0;
+}
+
+.log-note-inalterable p {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   PAGE ADMIN – SECTIONS DE LA CONSOLE
+   ============================================================ */
+
+.admin-section {
+  margin-bottom: 2.5rem;
+}
+
+.admin-section-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+.admin-section-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* ============================================================
+   PAGE ADMIN – CARTES DE LA SECTION SÉCURITÉ
+   ============================================================ */
+
+.admin-carte {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-top: 3px solid var(--bleu-marine);
+  border-radius: 4px;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-carte-titre {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bleu-marine);
+  margin-bottom: 0.75rem;
+}
+
+.admin-carte-texte {
+  font-size: 0.85rem;
+  color: var(--gris-texte);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+/* Bouton principal dans les cartes admin */
+.admin-carte-btn {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+}
+
+/* Bouton secondaire dans les cartes admin */
+.admin-carte-btn-secondaire {
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  padding: 0.5rem 1rem;
+}
+
+/* ============================================================
+   PAGE ADMIN – FORMULAIRE D'AJOUT D'UTILISATEUR
+   ============================================================ */
+
+.admin-form-ajout {
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   PAGE ADMIN – STATUTS DES COMPTES UTILISATEURS
+   Texte seul, aucun fond coloré, aucun badge.
+   ============================================================ */
+
+.statut-compte {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statut-compte-actif {
+  color: var(--vert-succes);
+}
+
+.statut-compte-suspendu {
+  color: #8b1a1a;
+}
+
+/* Ligne d'un compte suspendu : légèrement atténuée visuellement */
+.ligne-compte-suspendu td {
+  opacity: 0.6;
+}
+
+/* ============================================================
+   PAGE ADMIN – BOUTONS D'ACTION DANS LE TABLEAU UTILISATEURS
+   Boutons texte discrets, sans fond, avec couleur de police.
+   ============================================================ */
+
+.btn-action-table {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  color: var(--bleu-marine);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition);
+}
+
+.btn-action-table:hover {
+  color: var(--bleu-hover);
+}
+
+/* "Suspendre" : couleur rouge foncé pour signaler l'impact de l'action */
+.btn-action-suspendre {
+  color: #8b1a1a;
+}
+
+.btn-action-suspendre:hover {
+  color: #6b0e0e;
+}
+
+/* "Réactiver" : couleur vert foncé */
+.btn-action-reactiver {
+  color: var(--vert-succes);
+}
+
+.btn-action-reactiver:hover {
+  color: #145530;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – STRUCTURE GÉNÉRALE
+   ============================================================ */
+
+.signalement-body {
+  background-color: var(--gris-clair);
+}
+
+.signalement-main {
+  padding: 2.5rem 0 4rem;
+}
+
+.signalement-entete {
+  margin-bottom: 2rem;
+}
+
+.signalement-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.75rem;
+}
+
+.signalement-sous-titre {
+  font-size: 0.92rem;
+  color: var(--gris-texte);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – CARTE DU FORMULAIRE
+   ============================================================ */
+
+.signalement-carte {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 575px) {
+  .signalement-carte {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – SECTIONS DU FORMULAIRE
+   ============================================================ */
+
+.signalement-section {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.25rem;
+}
+
+.signalement-section-titre {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bleu-marine);
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+}
+
+.signalement-section-facultatif {
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--gris-texte);
+  margin-left: 0.4rem;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – SÉLECTEUR D'IDENTITÉ
+   Deux grandes options cliquables (radio visuel).
+   ============================================================ */
+
+.identite-choix {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/*
+   Chaque option est un <label> qui encapsule un <input type="radio">.
+   On cache l'input natif et on stylise le label entier
+   pour qu'il se comporte comme un bouton de choix.
+*/
+.identite-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border: 1.5px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+  margin: 0;
+}
+
+.identite-option:hover {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/*
+   Quand le radio enfant est coché,
+   le label (parent direct) prend le style "sélectionné".
+   :has() est supporté par tous les navigateurs modernes.
+*/
+.identite-option:has(input[type="radio"]:checked) {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/* On masque visuellement le bouton radio natif tout en le gardant
+   accessible au clavier et aux lecteurs d'écran. */
+.identite-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Indicateur visuel personnalisé qui remplace le radio natif */
+.identite-option::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--gris-bordure);
+  background-color: var(--blanc);
+  margin-top: 0.2rem;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.identite-option:has(input[type="radio"]:checked)::before {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-marine);
+  /* Cercle intérieur blanc via box-shadow interne */
+  box-shadow: inset 0 0 0 3px var(--blanc);
+}
+
+.identite-option-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.identite-option-titre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--noir);
+}
+
+.identite-option-desc {
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – COMPTEUR DE CARACTÈRES DU TEXTAREA
+   ============================================================ */
+
+.description-compteur {
+  font-size: 0.72rem;
+  color: var(--gris-texte);
+  text-align: right;
+  margin-top: 0.35rem;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – ZONE DE TÉLÉVERSEMENT DE FICHIERS
+   ============================================================ */
+
+/*
+   On cache l'input file natif (peu esthétique) et on le remplace
+   par un label stylisé. Le label reste fonctionnel car son
+   attribut "for" le lie à l'input cliquer sur le label
+   déclenche l'input.
+*/
+.pj-zone {
+  position: relative;
+}
+
+.pj-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.pj-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.75rem 1.5rem;
+  border: 1.5px dashed var(--gris-bordure);
+  border-radius: var(--rayon);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+  background-color: var(--gris-clair);
+}
+
+.pj-label:hover {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/* Focus visible sur l'input file masqué :
+   on le reporte sur le label adjacent via :focus-within sur la zone */
+.pj-zone:focus-within .pj-label {
+  outline: 2px solid var(--bleu-marine);
+  outline-offset: 2px;
+}
+
+.pj-label-principal {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bleu-marine);
+}
+
+.pj-label-formats {
+  font-size: 0.74rem;
+  color: var(--gris-texte);
+}
+
+/* Liste des fichiers sélectionnés, affichée sous la zone de dépôt */
+.liste-fichiers-selectionnes {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.liste-fichiers-selectionnes li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  padding: 0.4rem 0.75rem;
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+}
+
+.liste-fichiers-selectionnes .pj-nom {
+  font-weight: 500;
+  color: var(--noir);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 75%;
+}
+
+.liste-fichiers-selectionnes .pj-poids {
+  color: var(--gris-texte);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – ZONE DE SOUMISSION ET MENTIONS RGPD
+   ============================================================ */
+
+.signalement-soumission {
+  margin-top: 1.5rem;
+}
+
+.signalement-mention-rgpd {
+  font-size: 0.75rem;
+  color: var(--gris-texte);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--gris-clair);
+  border-left: 3px solid var(--gris-bordure);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+}
+
+.btn-soumettre-signalement {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.85rem 1.5rem;
+}
+
+/* ============================================================
+   PAGE SIGNALEMENT – ÉCRAN DE CONFIRMATION
+   ============================================================ */
+
+.confirmation-signalement {
+  margin-top: 1rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--gris-bordure);
+  border-top: 3px solid var(--vert-succes);
+  border-radius: var(--rayon);
+  background-color: var(--blanc);
+  text-align: center;
+}
+
+.confirmation-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vert-succes);
+  margin-bottom: 0.75rem;
+}
+
+.confirmation-texte {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+.confirmation-code-bloc {
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 1.25rem 1.5rem;
+  margin: 0 auto 1rem;
+  max-width: 420px;
+}
+
+.confirmation-code-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gris-texte);
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-code-valeur {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.confirmation-code-instruction {
+  font-size: 0.74rem;
+  color: var(--gris-texte);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* Indicateur obligatoire (*) en rouge foncé discret */
+.champ-obligatoire {
+  color: #8b1a1a;
+  margin-left: 0.2rem;
+  font-weight: 700;
+}
+
+/* ============================================================
+   DASHBOARD SALARIÉ – BLOC D'ACTION PRINCIPALE
+   ============================================================ */
+
+.salarie-action-section {
+  margin-bottom: 2.5rem;
+}
+
+/*
+   La carte d'action est construite en flex row sur desktop :
+   le texte prend tout l'espace disponible (flex: 1),
+   le bouton reste à droite sans se déformer.
+   Sur mobile, on bascule en colonne.
+*/
+.salarie-action-carte {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-left: 4px solid var(--bleu-marine);
+  border-radius: var(--rayon);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.salarie-action-contenu {
+  flex: 1;
+  min-width: 0;
+}
+
+.salarie-action-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.5rem;
+}
+
+.salarie-action-texte {
+  font-size: 0.85rem;
+  color: var(--gris-texte);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.salarie-action-bouton-zone {
+  flex-shrink: 0;
+}
+
+.salarie-btn-action {
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.88rem;
+  padding: 0.7rem 1.5rem;
+}
+
+@media (max-width: 575px) {
+  .salarie-action-carte {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .salarie-btn-action {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   DASHBOARD SALARIÉ – SECTION HISTORIQUE
+   ============================================================ */
+
+.salarie-historique-section {
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-section-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* ============================================================
+   DASHBOARD SALARIÉ – ENCART DROITS DU LANCEUR D'ALERTE
+   ============================================================ */
+
+.salarie-encart-droits {
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+  max-width: 760px;
+}
+
+.salarie-encart-titre {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--bleu-marine);
+  margin-bottom: 0.6rem;
+}
+
+.salarie-encart-texte {
+  font-size: 0.78rem;
+  color: var(--gris-texte);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – STRUCTURE GÉNÉRALE
+   Fond légèrement teinté pour différencier visuellement
+   cette page d'accès restreint de la page d'accueil publique.
+   ============================================================ */
+
+.connexion-body {
+  background-color: var(--gris-clair);
+}
+
+.connexion-main {
+  padding: 3rem 0 4rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – EN-TÊTE
+   ============================================================ */
+
+.connexion-entete {
+  margin-bottom: 2rem;
+}
+
+.connexion-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--bleu-marine);
+  margin-bottom: 0.5rem;
+}
+
+.connexion-sous-titre {
+  font-size: 0.88rem;
+  color: var(--gris-texte);
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – CARTE DE FORMULAIRE
+   ============================================================ */
+
+.connexion-carte {
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  padding: 2rem 2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – BANDEAU NIVEAU D'ACCÈS
+   Discret mais visible, positionné en haut de la carte.
+   ============================================================ */
+
+.connexion-niveau-acces {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+  border: 1px solid #c5d3e8;
+  border-radius: var(--rayon);
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – CHAMP MOT DE PASSE AVEC TOGGLE
+   Le wrapper est en flex pour aligner le champ et le bouton
+   sur la même ligne sans casser le style de l'input.
+   ============================================================ */
+
+.champ-mdp-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.champ-mdp {
+  /* padding-right pour que le texte du champ ne glisse pas
+       sous le bouton "Afficher" positionné en absolu */
+  padding-right: 5.5rem;
+  flex: 1;
+}
+
+.btn-toggle-mdp {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  color: var(--bleu-marine);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition);
+  /* On s'assure que le bouton ne modifie pas la hauteur du wrapper */
+  line-height: 1;
+}
+
+.btn-toggle-mdp:hover {
+  color: var(--bleu-hover);
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – CASE À COCHER "SE SOUVENIR"
+   ============================================================ */
+
+.champ-souvenir {
+  margin-bottom: 1.25rem;
+}
+
+.custom-checkbox {
+  border-color: var(--gris-bordure);
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: var(--bleu-marine);
+  border-color: var(--bleu-marine);
+}
+
+.custom-checkbox:focus {
+  border-color: var(--bleu-marine);
+  box-shadow: 0 0 0 3px rgba(27, 58, 107, 0.15);
+}
+
+.label-souvenir {
+  font-size: 0.82rem;
+  color: var(--gris-texte);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – MESSAGE D'ERREUR GLOBAL
+   Différent des erreurs par champ : concerne l'ensemble
+   du formulaire (identifiants incorrects, compte bloqué...).
+   ============================================================ */
+
+.erreur-connexion {
+  font-size: 0.8rem;
+  color: var(--rouge-erreur);
+  background-color: #fdf0ef;
+  border: 1px solid #e8c4c1;
+  border-left: 3px solid var(--rouge-erreur);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   PAGE CONNEXION STAFF – LIEN ALTERNATIF ET NOTE DE SÉCURITÉ
+   ============================================================ */
+
+.connexion-lien-alternatif {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.connexion-note-securite {
+  font-size: 0.72rem;
+  color: #8a8f9a;
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+/* ============================================================
+   PAGE CONFIRMATION – INDICATEUR DE SUCCÈS
+   Bandeau sobre en haut de la carte de confirmation.
+   ============================================================ */
+
+.confirmation-indicateur {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--vert-succes);
+  background-color: #eaf5ee;
+  border: 1px solid #b6d9c2;
+  border-radius: var(--rayon);
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+/* ============================================================
+   PAGE CONFIRMATION – AVERTISSEMENT CODE
+   Mise en évidence de l'importance du code de suivi.
+   ============================================================ */
+
+.confirmation-avertissement {
+  background-color: #fdf8ee;
+  border: 1px solid #e8d9b0;
+  border-left: 3px solid #b8860b;
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  padding: 0.85rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.confirmation-avertissement .confirmation-code-instruction {
+  color: #5c4a00;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   PAGE CONFIRMATION – ACTIONS EN BAS DE CARTE
+   ============================================================ */
+
+.confirmation-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.confirmation-lien-retour {
+  font-size: 0.8rem;
+  color: var(--gris-texte);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.confirmation-lien-retour:hover {
+  color: var(--noir);
+}
+
+/* ============================================================
+   PAGE CONNEXION SALARIÉ – CHAMP CODE DE SUIVI
+   Police monospace pour que le code soit lisible et bien aligné.
+   ============================================================ */
+
+.code-suivi-input {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   PAGE CONFIRMATION – BOUTON SECONDAIRE "RETOUR À L'ACCUEIL"
+   Outline bleu marine : même largeur que le bouton principal
+   pour un alignement propre, fond transparent, bordure marine.
+   ============================================================ */
+
+.btn-confirmation-secondaire {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--bleu-marine);
+  background-color: transparent;
+  border: 2px solid var(--bleu-marine);
+  border-radius: var(--rayon);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.btn-confirmation-secondaire:hover {
+  background-color: var(--bleu-marine);
+  color: var(--blanc);
+}
+
+/* ============================================================
+   FORMULAIRE SIGNALEMENT – CHECKBOX MASQUAGE D'IDENTITÉ
+   Style sobre aligné avec la charte graphique.
+   La checkbox native est masquée ; le label entier est cliquable.
+   ============================================================ */
+
+.label-checkbox-masquage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  background-color: var(--gris-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: var(--rayon);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.label-checkbox-masquage:hover {
+  border-color: var(--bleu-marine);
+  background-color: var(--bleu-clair);
+}
+
+/* Masquage de la checkbox native, remplacée visuellement */
+.custom-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  border: 2px solid var(--gris-bordure);
+  border-radius: 3px;
+  margin-top: 0.1rem;
+  cursor: pointer;
+  background-color: var(--blanc);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.custom-checkbox-input:checked {
+  background-color: var(--bleu-marine);
+  border-color: var(--bleu-marine);
+  /* Coche SVG encodée en base64 – pas de dépendance externe */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='1,5 4,9 11,1' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.custom-checkbox-input:focus-visible {
+  outline: 2px solid var(--bleu-marine);
+  outline-offset: 2px;
+}
+
+.label-checkbox-texte {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--noir);
+  line-height: 1.4;
+}
+
+/* Indicateur "Identité protégée" dans les tableaux RH */
+.identite-protegee {
+  font-style: italic;
+  color: var(--gris-texte);
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   BARRE DE FILTRES – TABLEAUX DE BORD RH ET JURISTE
+   ============================================================ */
+
+.filtres-barre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtre-groupe {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 160px;
+  min-width: 140px;
+}
+
+.filtre-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-reinitialiser {
+  display: inline-block;
+  padding: 0.52rem 1rem;
+  font-size: 0.85rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  color: var(--gris-texte);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  text-decoration: none;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-reinitialiser:hover {
+  border-color: var(--bleu-marine);
+  color: var(--bleu-marine);
+}
+
+@media (max-width: 768px) {
+  .filtres-barre {
+    flex-direction: column;
+  }
+  .filtre-groupe {
+    width: 100%;
+  }
+  .filtre-actions {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE ET TABLETTE
+   ============================================================ */
+
+/* Tableaux : scroll horizontal sur mobile */
+@media (max-width: 768px) {
+  /* Navbar : réduire le padding */
+  .site-navbar .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Dashboard : réduire le padding latéral */
+  .dashboard-main .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* En-tête dashboard : empiler vertical */
+  .dashboard-entete {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Tableau : taille de texte réduite */
+  .table-signalements {
+    font-size: 0.78rem;
+  }
+
+  .table-signalements thead th {
+    padding: 0.6rem 0.6rem;
+    font-size: 0.68rem;
+  }
+
+  .table-signalements tbody td {
+    padding: 0.6rem 0.6rem;
+  }
+
+  /* Masquer colonnes secondaires sur mobile */
+  .table-signalements .col-declarant,
+  .table-signalements .col-date {
+    display: none;
+  }
+
+  /* Filtres : empiler en colonne */
+  .filtres-barre {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .filtre-groupe {
+    width: 100%;
+  }
+
+  /* Dossier : colonne unique */
+  .dossier-section {
+    padding: 1rem;
+  }
+
+  /* Actions-bloc : ne plus être sticky */
+  .actions-bloc {
+    position: static !important;
+  }
+
+  /* Boutons ouvrir : taille réduite */
+  .btn-ouvrir {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* Formulaire signalement */
+  .signalement-carte {
+    padding: 1.25rem;
+  }
+
+  /* Bouton action salarié */
+  .salarie-action-carte {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .salarie-action-bouton-zone {
+    width: 100%;
+  }
+
+  .salarie-btn-action {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hero page accueil */
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .btn-hero-primary {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Messagerie */
+  .message {
+    max-width: 90%;
+  }
+
+  /* Connexion */
+  .connexion-carte {
+    padding: 1.25rem;
+  }
+}
+
+/* Tablette */
+@media (max-width: 992px) and (min-width: 769px) {
+  .dashboard-entete {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .table-signalements {
+    font-size: 0.82rem;
+  }
+
+  .actions-bloc {
+    position: static !important;
+  }
+}
